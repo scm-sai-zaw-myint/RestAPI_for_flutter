@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,6 +16,9 @@ import java.io.IOException;
 public class HeaderHandlers implements HandlerInterceptor {
     @Autowired
     Crypto crypto;
+
+    @Value("${app.secret.public.key}")
+    String publicKey;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if(request.getHeader("x-app-key") != null){
@@ -38,7 +42,7 @@ public class HeaderHandlers implements HandlerInterceptor {
     }
     private boolean checkAppKey(String key) throws Exception {
         String principal = System.getProperty("user.name");
-        return key.equals(crypto.sha1(principal));
+        return key.equals(crypto.sha1(principal)) || publicKey.equals(key);
     }
     @Data
     @AllArgsConstructor

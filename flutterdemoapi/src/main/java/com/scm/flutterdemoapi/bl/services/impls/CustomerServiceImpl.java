@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public ResponseEntity<?> getCustomers() {
         List<CustomerDTO> customers = new ArrayList<>();
-        for(Customers customer: this.customerRepo.findAll()){
+        for(Customers customer: this.customerRepo.getAllCustomers()){
             customers.add(new CustomerDTO(customer));
         }
         return Response.send(HttpStatus.OK, true, "Get all customer success.", customers,null);
