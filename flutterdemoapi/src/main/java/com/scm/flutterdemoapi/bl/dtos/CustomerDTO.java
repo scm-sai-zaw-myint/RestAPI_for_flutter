@@ -14,7 +14,6 @@ public class CustomerDTO {
     String phone;
     String address;
     Date dob;
-    @JsonIgnore
     String password;
     Date createdAt;
     Date updatedAt;
