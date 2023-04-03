@@ -2,7 +2,7 @@ package com.scm.flutterdemoapi.controllers;
 
 import com.scm.flutterdemoapi.bl.services.CustomerService;
 import com.scm.flutterdemoapi.forms.CustomerForm;
-import org.eclipse.sisu.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

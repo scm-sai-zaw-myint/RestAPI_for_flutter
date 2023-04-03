@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
             customers.add(new CustomerDTO(customer));
         }
         page = page == null ? 1 : page;
-        Pagination pagination = new Pagination(customers, page, limit,"customers");
+        Pagination pagination = new Pagination(customers, page, limit,"customers/list");
         if(pagination.getData() == null) {
             return Response.send(HttpStatus.ACCEPTED, false, "Not data", null,null,null);
         }
